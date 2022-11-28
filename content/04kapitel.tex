@@ -1,0 +1,27 @@
+%!TEX root = ../main.tex
+
+\chapter{Tabellen}
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Beispielhafte Tabelle mit einigen Extras}
+    \label{tab:tabelle}
+    \vspace{12pt}
+    \begin{tabularx}{.85\textwidth}{|c|Xr|}
+        \cline{2-3}
+        \multicolumn{1}{l|}{} & Spalte A & Spalte B \\ \cline{2-3}\noalign{\vskip\doublerulesep\vskip-\arrayrulewidth} \hline 
+        \parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{intern}}} 
+        & Inhalt 1 & \\
+        & & \\
+        & & \\ \hline \hline 
+        \parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{alternativ}}} 
+        & & \\
+        & & Inhalt 2 \\ \hline
+    \end{tabularx}
+\end{table} 
+
+Es sind auch Tabellen über mehrere Seiten und im Querformat möglich. Dabei automatische Spaltenbreite und automatischer Umbruch:
+\begin{landscape}
+    \LTXtable{24cm}{images/appendix/\jobname-vergleich-ess.tex}
+\end{landscape}

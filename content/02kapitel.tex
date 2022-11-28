@@ -1,0 +1,56 @@
+%!TEX root = ../main.tex
+
+\chapter{Formatierung}
+
+\section{Überschrift Ebene 1}
+
+\subsection{Überschrift Ebene 2}
+
+\subsubsection{Überschrift Ebene 3}
+Diese wird nicht mehr im Inhaltsverzeichnis angezeigt.
+
+\section{Formatierung der Schrift}
+Der Befehl \verb|\textbf| schreibt ein Text \textbf{fett}.\\
+Der Befehl \verb|\textsc| schreibt ein Text \textit{kursiv}.\\
+
+\section{Referenzierungen}\label{sec:referenzierungen}
+Grundsätzlich kann in \LaTeX~alles referenziert und gelabled werden.
+Dabei müssen \textit{label} immer klein geschrieben werden und darf nur \glqq{}-\grqq{} und \glqq{}:\grqq{} enthalten.\\
+Die Referenzierung erfolgt folgendermaßen:\\
+Der Befehl \verb|\autoref| referenziert auf den entsprechenden \autoref{sec:referenzierungen}\\
+Dabei stellt der Befehl je das Schlüsselwort zur Verfügung, hier: \textit{Abschnitt}.\\ Alternativen sind \textit{Abbildung}, \textit{Tabelle}, \dots
+
+\section{Aufzählungen}
+Aufzählungen werden mit folgender Umgebung dargestellt:
+\begin{itemize}
+    \item Item 1
+    \item Item 2
+    \begin{itemize}
+        \item Unter-Item 1
+        \item Unter-Item 2
+    \end{itemize}
+    \item Item 3
+\end{itemize}
+Das Ganze geht auch mit Zahlen als Aufzählungen
+\begin{enumerate}
+    \item Item 1
+    \item Item 2
+    \begin{enumerate}
+        \item Unter-Item 1
+        \item Unter-Item 2
+    \end{enumerate}
+    \item Item 3
+\end{enumerate}
+
+\section{Abkürzungen}
+Abkürzungen können auch verwendet werden. \acs{KI} oder \acfp{KI}
+
+\section{Formeln}
+
+Formeln können mit \LaTeX~sehr einfach erstellt werden. Diese können mehrzeilig und wahlweise mit Nummerierung als auch Tag (siehe \autoref{eq:formel1}) versehen werden. Das \glqq{}\&\grqq{} bewirkt eine vertikale Ausrichtung der Formeln untereinander an gewählter Stelle. Chemische Reaktionsgleichungen und Sonderzeichen sind ebenso möglich, wie gängige Mathematik Symbole.
+\begin{align}
+    F&=m \cdot a \notag \\
+    \vec{v}_\mathsf{rel}(t)&=\int \vec{a}_\mathsf{rel}(t) \,dx \label{eq:formel1} \\[18pt]
+    \mathsf{mit}~[\vec{v}]&=\mathsf{\frac{m}{s}} \notag
+\end{align}
+Indizes und Einheiten sind grundsätzlich nicht Kursiv und in Schriftart des Textes zu schreiben, Prozentzeichen ebenfalls.

@@ -1,0 +1,172 @@
+%!TEX root = ../main.tex
+
+\chapter{Sonstiges}
+
+\section{CSV-Plots}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=\textwidth,
+            height=.6\textwidth,
+            grid=both,
+            ymin=0 , ymax=850,
+            minor y tick num=1,
+            xtick={2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022},
+            tick label style={/pgf/number format/1000 sep=},
+            x tick label style={rotate=90},
+            xlabel={Jahre}, ylabel={Anzahl},
+            legend entries={Legende 1,Legende 2},
+            % legend style={at={(0.99,0.99)}, anchor=north west},
+            legend pos=north west,
+        ]
+            \addplot+ [smooth, black!50, mark=square*, mark options={fill=black!50, draw=black!50}] table [x=Jahr,y=Anmeldungen,col sep=semicolon]{images/Zeitverlauf2.csv};
+            \addplot+ [smooth, black, mark=square*, mark options={fill=black, draw=black}] table [x=Jahr,y=Erteilungen,col sep=semicolon]{images/Zeitverlauf2.csv};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Weiterer Beispielplot über csv-Dateien}
+    \label{fig:zeitlicher-verlauf}
+\end{figure}
+
+
+\begin{landscape}
+    \centering
+    \begin{figure}
+        \begin{tikzpicture}
+            \pgfplotsset{set layers}
+            \pgfplotsset{
+                width=22cm,
+                height=.7\textwidth,
+                % legend style={at={(0.99,0.99)}, anchor=north west},
+                legend pos=north west,
+                legend cell align=left,
+                ticklabel shift={0.05cm},
+                tick label style={/pgf/number format/1000 sep=},
+                xmin=0, xmax=360,
+                no markers,
+                every axis plot/.append style={thick}
+                % enlargelimits=0.05
+            }
+            \begin{axis}[
+                grid=major,
+                scale only axis,
+                axis y line*=left, % the '*' avoids arrow heads
+                ymin=0, ymax=1.8,
+                xlabel=x-Achse,
+                ylabel=y-Achse 2,
+                legend style={at={(0.99,0.99)}, anchor=north east},
+                legend entries=Legende 1
+            ]
+            \addplot+[smooth, dark-green] table[x=A,y=B,col sep=semicolon]{images/Tabelle2.csv};
+            \end{axis}
+            \begin{axis}[
+                scale only axis,
+                ymin=0, ymax=250,
+                axis y line*=right,
+                axis x line=none,
+                ylabel=y-Achse 2,
+                legend style={at={(0.99,0.92)}, anchor=north east},
+                legend entries=Legende 2
+            ]
+            \addplot+[smooth, darkgray] table[x=A,y=C,col sep=semicolon]{images/Tabelle2.csv};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Und noch ein weiteres Beipiel eines pgfplots}
+    \end{figure}
+\end{landscape}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \pgfplotsset{set layers}
+        \pgfplotsset{
+            width=.8\textwidth,
+            height = .3\textheight,
+            % legend style={at={(0.99,0.99)}, anchor=north west},
+            legend pos=north west,
+            legend cell align=left,
+            ticklabel shift={0.05cm},
+            tick label style={/pgf/number format/1000 sep=},
+            xtick={2021,2022,2023,2024,2025,2026,2027,2028,2029,2030},
+            no markers,
+            enlargelimits=0.05
+        }
+        \begin{axis}[
+            grid=major,
+            scale only axis,
+            axis y line*=left, % the '*' avoids arrow heads
+            ymin=0, ymax=900,
+            xlabel=x-Achse,
+            ylabel=y-Achse 1,
+            legend style={at={(0.01,0.99)}, anchor=north west},
+            legend entries=Legende 1
+        ]
+        \addplot[dark-green] coordinates {
+            (2021, 160)(2022, 180)(2023, 220)(2024, 280)(2025, 330)(2026, 400)(2027, 470)(2028, 600)(2029, 720)(2030, 825)
+        };
+        \end{axis}
+        \begin{axis}[
+            ybar,
+            scale only axis,
+            ymin=0, ymax=30,
+            axis y line*=right,
+            axis x line=none,
+            ylabel=y-Achse 2,
+            legend style={at={(0.01,0.89)}, anchor=north west},
+            legend entries=Legende 2
+        ]
+        \addplot[black!60, fill=black!30] coordinates {
+            (2021, 0.500)(2022, 1.406)(2023, 2.750)(2024, 4.375)(2025, 7.734)(2026, 12.500)(2027, 14.688)(2028, 18.750)(2029, 22.500)(2030, 25.781)
+        };
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Geplottetes Balken und Liniendiagramm mit Primär- und Sekundärachse}
+    \label{fig:balken-linien-plot}
+\end{figure}
+
+\section{Kreisdiagramme}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \pie[rotate=90, style={thin}, radius=3.3, text=legend, color={black!10, black!20, dark-green!70, middle-green!80, light-green!80, black!50, black!60, black!70, black!80, black!90}, before number=\printonlylargeenough{3}, after number=\ifprintnumber\%\fi]
+        {5/a , 5/b , 26/c , 50/d , 7/e, 4/f , 3/g}
+    \end{tikzpicture}
+    \caption{Einfaches Kreisdiagramm}
+    \label{fig:kreisdiagramm}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{.49\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \pie[rotate=90, style={thin}, radius=2, color={black!10, black!20, dark-green!70, middle-green!80, light-green!80, black!50, black!60, black!70, black!80, black!90}, before number=\printonlylargeenough{4}, after number=\ifprintnumber\%\fi]
+            {12/ , 10/ , 57/ , 0/ , 6/, 9/ , 6/}
+        \end{tikzpicture}
+        \caption{Struktur A}
+        \label{fig:kreis-a}
+    \end{subfigure}
+    \begin{subfigure}[t]{.49\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \pie[rotate=90, style={thin}, radius=2, text=legend, color={black!10, black!20, dark-green!70, middle-green!80, light-green!80, black!50, black!60, black!70, black!80, black!90}, before number=\printonlylargeenough{4}, after number=\ifprintnumber\%\fi]
+            {3/a , 3/b , 58/c , 30/d , 2/e, 2/f , 2/g}
+        \end{tikzpicture}
+        \caption{Struktur B}
+        \label{fig:kreis-b}
+    \end{subfigure}
+    \caption{Doppeltes Kreisdiagramm mir einer Legende}
+    \label{fig:doppeltes-kreisdiagramm}
+\end{figure}
+
+\section{TikZ}
+
+\section{Quellcode}
+
+Quellcode kann folgendermaßen dargestellt werden:
+
+\lstinputlisting[caption={Bisheriger Quellcode für die Motor-Regelung auf dem Arduino},captionpos=b,style=style-c,label=lst:arduino-old]{images/codes/arduino-old.c}
+
+Dabei sind die styles \textit{style-c}, \textit{style-cpp} und \textit{style-python} definiert.
